@@ -44,37 +44,41 @@ const QuestionComponent: FC<QuestionComponentProps> = ({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <h2 className="text-xl font-semibold">{question.question}</h2>
-      <div className="space-y-2">
+    <form onSubmit={handleSubmit} className="space-y-6">
+      <h2 className="text-2xl font-semibold text-violet-800">
+        {question.question}
+      </h2>
+      <div className="space-y-4">
         {question.options.map((option) => (
-          <label key={option} className="flex items-center space-x-2">
+          <label key={option} className="flex items-center space-x-3">
             <input
               type="radio"
               name="answer"
               value={option}
               checked={currentOption === option}
               onChange={() => setCurrentOption(option)}
-              className="form-radio"
+              className="form-radio h-5 w-5 text-violet-600 transition duration-150"
             />
-            <span>{option}</span>
+            <span className="text-lg text-violet-800">{option}</span>
           </label>
         ))}
       </div>
-      {hasError && <p className="text-red-600">Please select an answer.</p>}
+      {hasError && (
+        <p className="text-red-600 animate-pulse">Please select an answer.</p>
+      )}
       <div className="flex space-x-4">
         {!isFirstQuestion && (
           <button
             type="button"
             onClick={onPrevious}
-            className="bg-gray-300 text-gray-800 px-4 py-2 rounded"
+            className="bg-violet-500 text-white px-6 py-2 rounded shadow hover:bg-violet-600 transition duration-200"
           >
             Previous
           </button>
         )}
         <button
           type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded"
+          className="bg-violet-700 text-white px-6 py-2 rounded shadow hover:bg-violet-800 transition duration-200"
         >
           Next
         </button>

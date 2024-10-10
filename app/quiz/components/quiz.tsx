@@ -11,6 +11,7 @@ interface QuizProps {
 }
 
 const Quiz: FC<QuizProps> = ({ questions }) => {
+  /* const questionsPromise = getQuestionsFromFile(); */
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>(
     Array(questions.length).fill("")

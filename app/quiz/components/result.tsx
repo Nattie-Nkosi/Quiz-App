@@ -26,36 +26,34 @@ const Result: FC<ResultProps> = ({ questions, answers }) => {
     status = "Failed";
   }
 
+  // Determine status color
+  const statusColor =
+    status === "Excellence"
+      ? "text-green-600"
+      : status === "Passed"
+      ? "text-violet-600"
+      : "text-red-600";
+
+  const progressBarColor =
+    status === "Excellence"
+      ? "bg-green-600"
+      : status === "Passed"
+      ? "bg-violet-600"
+      : "bg-red-600";
+
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold">Quiz Completed</h2>
+      <h2 className="text-3xl font-bold text-violet-800">Quiz Completed</h2>
       <div className="space-y-4">
         <p className="text-lg">
           You scored {correctAnswers} out of {totalQuestions} (
           {percentageScore.toFixed(2)}%)
         </p>
-        <p
-          className={
-            status === "Excellence"
-              ? "text-green-600 font-semibold"
-              : status === "Passed"
-              ? "text-blue-600 font-semibold"
-              : "text-red-600 font-semibold"
-          }
-        >
-          Status: {status}
-        </p>
+        <p className={`${statusColor} font-semibold`}>Status: {status}</p>
         {/* Progress Bar */}
         <div className="w-full bg-gray-300 rounded-full h-4 overflow-hidden">
           <div
-            className={
-              `h-full ` +
-              (status === "Excellence"
-                ? "bg-green-600"
-                : status === "Passed"
-                ? "bg-blue-600"
-                : "bg-red-600")
-            }
+            className={`h-full ${progressBarColor} transition-all duration-500`}
             style={{ width: `${percentageScore}%` }}
           ></div>
         </div>
@@ -67,19 +65,22 @@ const Result: FC<ResultProps> = ({ questions, answers }) => {
             ? "Great job! You have passed the quiz."
             : "Unfortunately, you did not pass. Please review the material and try again."}
         </p>
-        {/* Optional: Retake Quiz Button */}
+        {/* Retake Quiz Button */}
         <button
           onClick={() => window.location.reload()}
-          className="bg-blue-600 text-white px-4 py-2 rounded"
+          className="bg-violet-700 text-white px-6 py-2 rounded shadow hover:bg-violet-800 transition duration-200"
         >
           Retake Quiz
         </button>
       </div>
       {/* Display each question and user's answer */}
-      <div className="space-y-2">
+      <div className="space-y-4">
         {questions.map((question, idx) => (
-          <div key={question.id} className="p-4 border rounded">
-            <p className="font-semibold">{question.question}</p>
+          <div
+            key={question.id}
+            className="p-4 border rounded shadow-sm hover:shadow-md transition duration-200"
+          >
+            <p className="font-semibold text-violet-800">{question.question}</p>
             <p>
               Your Answer: {answers[idx]}{" "}
               {answers[idx] === question.correctAnswer ? "✅" : "❌"}

@@ -6,7 +6,7 @@ import Quiz from "./components/quiz";
 import { Question } from "./types";
 import path from "path";
 
-async function getQuestionsFromFile(): Promise<Question[]> {
+export async function getQuestionsFromFile(): Promise<Question[]> {
   const filePath = path.join(process.cwd(), "data", "questions.json");
   try {
     const jsonData = await fs.readFile(filePath, "utf-8");
@@ -23,14 +23,14 @@ const QuizPage: FC = async () => {
 
   if (!questions || questions.length === 0) {
     return (
-      <div className="p-6">
+      <div className="p-6 max-w-xl mx-auto">
         <h1 className="text-2xl font-bold">No Questions Available</h1>
       </div>
     );
   }
 
   return (
-    <div className="p-6">
+    <div className="p-6 max-w-xl mx-auto">
       <Quiz questions={questions} />
     </div>
   );
