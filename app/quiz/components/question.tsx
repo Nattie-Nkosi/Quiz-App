@@ -1,13 +1,16 @@
 // app/quiz/components/question.tsx
 "use client";
 
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import { Question } from "../types";
 import { z } from "zod";
 
 interface QuestionComponentProps {
   question: Question;
   onAnswerSelect: (answer: string) => void;
+  onPrevious: () => void;
+  selectedOption: string;
+  isFirstQuestion: boolean;
 }
 
 const answerSchema = z.string().nonempty("Please select an answer.");
@@ -15,21 +18,29 @@ const answerSchema = z.string().nonempty("Please select an answer.");
 const QuestionComponent: FC<QuestionComponentProps> = ({
   question,
   onAnswerSelect,
+  onPrevious,
+  selectedOption,
+  isFirstQuestion,
 }) => {
-  const [selectedOption, setSelectedOption] = useState("");
+  const [currentOption, setCurrentOption] = useState(selectedOption || "");
   const [hasError, setHasError] = useState(false);
+
+  useEffect(() => {
+    setCurrentOption(selectedOption || "");
+    setHasError(false);
+  }, [question, selectedOption]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const validation = answerSchema.safeParse(selectedOption);
+    const validation = answerSchema.safeParse(currentOption);
     if (!validation.success) {
       setHasError(true);
       return;
     }
 
     setHasError(false);
-    onAnswerSelect(selectedOption);
+    onAnswerSelect(currentOption);
   };
 
   return (
@@ -42,8 +53,8 @@ const QuestionComponent: FC<QuestionComponentProps> = ({
               type="radio"
               name="answer"
               value={option}
-              checked={selectedOption === option}
-              onChange={() => setSelectedOption(option)}
+              checked={currentOption === option}
+              onChange={() => setCurrentOption(option)}
               className="form-radio"
             />
             <span>{option}</span>
@@ -51,9 +62,23 @@ const QuestionComponent: FC<QuestionComponentProps> = ({
         ))}
       </div>
       {hasError && <p className="text-red-600">Please select an answer.</p>}
-      <button type="submit" className="btn btn-primary">
-        Next
-      </button>
+      <div className="flex space-x-4">
+        {!isFirstQuestion && (
+          <button
+            type="button"
+            onClick={onPrevious}
+            className="bg-gray-300 text-gray-800 px-4 py-2 rounded"
+          >
+            Previous
+          </button>
+        )}
+        <button
+          type="submit"
+          className="bg-blue-600 text-white px-4 py-2 rounded"
+        >
+          Next
+        </button>
+      </div>
     </form>
   );
 };

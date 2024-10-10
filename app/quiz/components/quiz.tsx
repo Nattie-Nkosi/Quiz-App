@@ -12,15 +12,26 @@ interface QuizProps {
 
 const Quiz: FC<QuizProps> = ({ questions }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
+  const [selectedAnswers, setSelectedAnswers] = useState<string[]>(
+    Array(questions.length).fill("")
+  );
   const [isCompleted, setIsCompleted] = useState(false);
 
   const handleAnswerSelection = (answer: string) => {
-    setSelectedAnswers([...selectedAnswers, answer]);
+    const updatedAnswers = [...selectedAnswers];
+    updatedAnswers[currentIndex] = answer;
+    setSelectedAnswers(updatedAnswers);
+
     if (currentIndex + 1 < questions.length) {
       setCurrentIndex(currentIndex + 1);
     } else {
       setIsCompleted(true);
+    }
+  };
+
+  const handlePreviousQuestion = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
     }
   };
 
@@ -32,6 +43,9 @@ const Quiz: FC<QuizProps> = ({ questions }) => {
     <QuestionComponent
       question={questions[currentIndex]}
       onAnswerSelect={handleAnswerSelection}
+      onPrevious={handlePreviousQuestion}
+      selectedOption={selectedAnswers[currentIndex]}
+      isFirstQuestion={currentIndex === 0}
     />
   );
 };
