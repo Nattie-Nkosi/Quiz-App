@@ -1,0 +1,87 @@
+[
+  {
+    "id": "1",
+    "question": "What does the acronym 'LAN' stand for in networking?",
+    "options": [
+      "Local Area Network",
+      "Large Area Network",
+      "Logical Area Network",
+      "Long Area Network"
+    ],
+    "correctAnswer": "Local Area Network"
+  },
+  {
+    "id": "2",
+    "question": "Which layer of the OSI model is responsible for data encryption?",
+    "options": [
+      "Physical Layer",
+      "Data Link Layer",
+      "Presentation Layer",
+      "Application Layer"
+    ],
+    "correctAnswer": "Presentation Layer"
+  },
+  {
+    "id": "3",
+    "question": "What is the purpose of the subnet mask in IP networking?",
+    "options": [
+      "To identify the default gateway",
+      "To determine the network portion of an IP address",
+      "To encrypt data packets",
+      "To assign IP addresses dynamically"
+    ],
+    "correctAnswer": "To determine the network portion of an IP address"
+  },
+  {
+    "id": "4",
+    "question": "Which protocol is used to find the MAC address of a local device from its IP address?",
+    "options": ["DNS", "DHCP", "ARP", "FTP"],
+    "correctAnswer": "ARP"
+  },
+  {
+    "id": "5",
+    "question": "What does the command 'ping' test in network troubleshooting?",
+    "options": [
+      "DNS resolution",
+      "TCP connection",
+      "Network connectivity",
+      "Port availability"
+    ],
+    "correctAnswer": "Network connectivity"
+  },
+  {
+    "id": "6",
+    "question": "Which routing protocol uses a link-state algorithm?",
+    "options": ["RIP", "OSPF", "BGP", "EIGRP"],
+    "correctAnswer": "OSPF"
+  },
+  {
+    "id": "7",
+    "question": "What is the default administrative distance of OSPF?",
+    "options": ["90", "110", "120", "1"],
+    "correctAnswer": "110"
+  },
+  {
+    "id": "8",
+    "question": "Which protocol is used for secure remote command-line access?",
+    "options": ["Telnet", "SSH", "FTP", "HTTP"],
+    "correctAnswer": "SSH"
+  },
+  {
+    "id": "9",
+    "question": "What does VLAN stand for?",
+    "options": [
+      "Virtual Local Area Network",
+      "Variable Local Area Network",
+      "Virtual Logical Area Network",
+      "Variable Logical Area Network"
+    ],
+    "correctAnswer": "Virtual Local Area Network"
+  },
+  {
+    "id": "10",
+    "question": "Which of the following is a Class C IP address?",
+    "options": ["192.168.1.1", "10.0.0.1", "172.16.0.1", "224.0.0.1"],
+    "correctAnswer": "192.168.1.1"
+  }
+]

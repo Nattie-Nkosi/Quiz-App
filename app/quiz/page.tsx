@@ -1,12 +1,25 @@
 // app/quiz/page.tsx
 
 import { FC } from "react";
-import { getQuestions } from "./utils/get-questions";
+import fs from "fs/promises";
 import Quiz from "./components/quiz";
 import { Question } from "./types";
+import path from "path";
+
+async function getQuestionsFromFile(): Promise<Question[]> {
+  const filePath = path.join(process.cwd(), "data", "questions.json");
+  try {
+    const jsonData = await fs.readFile(filePath, "utf-8");
+    const questions: Question[] = JSON.parse(jsonData);
+    return questions;
+  } catch (error) {
+    console.error("Error reading questions:", error);
+    return [];
+  }
+}
 
 const QuizPage: FC = async () => {
-  const questions: Question[] = await getQuestions();
+  const questions: Question[] = await getQuestionsFromFile();
 
   if (!questions || questions.length === 0) {
     return (
