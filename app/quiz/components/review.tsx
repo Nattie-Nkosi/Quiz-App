@@ -1,7 +1,7 @@
 // app/quiz/components/review.tsx
 "use client";
 
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { Question } from "../types";
 
 interface ReviewProps {
@@ -17,6 +17,24 @@ const Review: FC<ReviewProps> = ({
   onEditAnswer,
   onSubmit,
 }) => {
+  useEffect(() => {
+    const handleContextMenu = (e: MouseEvent) => {
+      e.preventDefault();
+    };
+
+    const handleCopy = (e: ClipboardEvent) => {
+      e.preventDefault();
+    };
+
+    document.addEventListener("contextmenu", handleContextMenu);
+    document.addEventListener("copy", handleCopy);
+
+    return () => {
+      document.removeEventListener("contextmenu", handleContextMenu);
+      document.removeEventListener("copy", handleCopy);
+    };
+  }, []);
+
   return (
     <div className="space-y-6">
       <h2 className="text-2xl font-bold text-violet-800">
@@ -26,7 +44,7 @@ const Review: FC<ReviewProps> = ({
         {questions.map((question, idx) => (
           <div
             key={question.id}
-            className={`p-4 border rounded shadow-sm hover:shadow-md transition duration-200 cursor-pointer ${
+            className={`p-4 border rounded shadow-sm hover:shadow-md transition duration-200 cursor-pointer no-select ${
               !answers[idx] ? "border-red-500" : ""
             }`}
             onClick={() => onEditAnswer(idx)}

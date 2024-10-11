@@ -34,6 +34,28 @@ const QuestionComponent: FC<QuestionComponentProps> = ({
     setHasError(false);
   }, [question, selectedOption]);
 
+  // Disable context menu on component mount
+  useEffect(() => {
+    const handleContextMenu = (e: MouseEvent) => {
+      e.preventDefault();
+    };
+
+    const handleCopy = (e: ClipboardEvent) => {
+      e.preventDefault();
+      // Optionally, you can display a message to the user
+      alert("Copying is not allowed on this page.");
+    };
+
+    document.addEventListener("contextmenu", handleContextMenu);
+    document.addEventListener("copy", handleCopy);
+
+    return () => {
+      // Clean up the event listener on component unmount
+      document.removeEventListener("contextmenu", handleContextMenu);
+      document.removeEventListener("copy", handleCopy);
+    };
+  }, []);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -49,12 +71,12 @@ const QuestionComponent: FC<QuestionComponentProps> = ({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      <h2 className="text-2xl font-semibold text-violet-800">
+      <h2 className="text-2xl font-semibold text-violet-800 no-select">
         {question.question}
       </h2>
       <div className="space-y-4">
         {question.options.map((option) => (
-          <label key={option} className="flex items-center space-x-3">
+          <label key={option} className="flex items-center space-x-3 no-select">
             <input
               type="radio"
               name="answer"

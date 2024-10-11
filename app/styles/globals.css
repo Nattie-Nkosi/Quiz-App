@@ -12,3 +12,9 @@ body {
 .focus\:ring-2:focus {
   box-shadow: 0 0 0 2px theme("colors.violet.500");
 }
+
+.no-select {
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
