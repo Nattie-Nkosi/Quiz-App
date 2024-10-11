@@ -4,6 +4,7 @@
 import { FC, useState } from "react";
 import { Question } from "../types";
 import QuestionComponent from "./question";
+import Review from "./review";
 import Result from "./result";
 
 interface QuizProps {
@@ -11,12 +12,12 @@ interface QuizProps {
 }
 
 const Quiz: FC<QuizProps> = ({ questions }) => {
-  /* const questionsPromise = getQuestionsFromFile(); */
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>(
     Array(questions.length).fill("")
   );
   const [isCompleted, setIsCompleted] = useState(false);
+  const [isReviewing, setIsReviewing] = useState(false);
 
   const handleAnswerSelection = (answer: string) => {
     const updatedAnswers = [...selectedAnswers];
@@ -26,7 +27,8 @@ const Quiz: FC<QuizProps> = ({ questions }) => {
     if (currentIndex + 1 < questions.length) {
       setCurrentIndex(currentIndex + 1);
     } else {
-      setIsCompleted(true);
+      // Instead of setting isCompleted, set isReviewing to true
+      setIsReviewing(true);
     }
   };
 
@@ -36,8 +38,39 @@ const Quiz: FC<QuizProps> = ({ questions }) => {
     }
   };
 
+  const handleGoToQuestion = (index: number) => {
+    setCurrentIndex(index);
+    setIsReviewing(false);
+  };
+
+  const handleReview = () => {
+    setIsReviewing(true);
+  };
+
+  const handleSubmitQuiz = () => {
+    const unanswered = selectedAnswers.some((answer) => answer === "");
+    if (unanswered) {
+      alert(
+        "You have unanswered questions. Please answer all questions before submitting."
+      );
+      return;
+    }
+    setIsCompleted(true);
+  };
+
   if (isCompleted) {
     return <Result questions={questions} answers={selectedAnswers} />;
+  }
+
+  if (isReviewing) {
+    return (
+      <Review
+        questions={questions}
+        answers={selectedAnswers}
+        onEditAnswer={handleGoToQuestion}
+        onSubmit={handleSubmitQuiz}
+      />
+    );
   }
 
   return (
@@ -47,6 +80,8 @@ const Quiz: FC<QuizProps> = ({ questions }) => {
       onPrevious={handlePreviousQuestion}
       selectedOption={selectedAnswers[currentIndex]}
       isFirstQuestion={currentIndex === 0}
+      isLastQuestion={currentIndex === questions.length - 1}
+      onReview={handleReview}
     />
   );
 };

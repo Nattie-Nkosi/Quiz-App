@@ -12,6 +12,17 @@
   },
   {
     "id": "2",
+    "question": "Which of the following best describes authorization?",
+    "options": [
+      "The process of veryfying the level of access configured for a user",
+      "The process of establishing a user's accounts upon time",
+      "The process of recording the use of resources",
+      "The process of veryfying a user's identity"
+    ],
+    "correctAnswer": "The process of veryfying the level of access configured for a user"
+  },
+  {
+    "id": "3",
     "question": "Which layer of the OSI model is responsible for data encryption?",
     "options": [
       "Physical Layer",
@@ -22,7 +33,7 @@
     "correctAnswer": "Presentation Layer"
   },
   {
-    "id": "3",
+    "id": "4",
     "question": "What is the purpose of the subnet mask in IP networking?",
     "options": [
       "To identify the default gateway",
@@ -33,13 +44,13 @@
     "correctAnswer": "To determine the network portion of an IP address"
   },
   {
-    "id": "4",
+    "id": "5",
     "question": "Which protocol is used to find the MAC address of a local device from its IP address?",
     "options": ["DNS", "DHCP", "ARP", "FTP"],
     "correctAnswer": "ARP"
   },
   {
-    "id": "5",
+    "id": "6",
     "question": "What does the command 'ping' test in network troubleshooting?",
     "options": [
       "DNS resolution",
@@ -50,25 +61,31 @@
     "correctAnswer": "Network connectivity"
   },
   {
-    "id": "6",
+    "id": "7",
     "question": "Which routing protocol uses a link-state algorithm?",
     "options": ["RIP", "OSPF", "BGP", "EIGRP"],
     "correctAnswer": "OSPF"
   },
   {
-    "id": "7",
+    "id": "8",
+    "question": "Which of the following dynamic routing protocols are Distance Vector routing protocols?",
+    "options": ["IS-IS", "EIGRP", "OSPF", "BGP", "RIP"],
+    "correctAnswer": "RIP"
+  },
+  {
+    "id": "9",
     "question": "What is the default administrative distance of OSPF?",
     "options": ["90", "110", "120", "1"],
     "correctAnswer": "110"
   },
   {
-    "id": "8",
+    "id": "10",
     "question": "Which protocol is used for secure remote command-line access?",
     "options": ["Telnet", "SSH", "FTP", "HTTP"],
     "correctAnswer": "SSH"
   },
   {
-    "id": "9",
+    "id": "11",
     "question": "What does VLAN stand for?",
     "options": [
       "Virtual Local Area Network",
@@ -79,9 +96,87 @@
     "correctAnswer": "Virtual Local Area Network"
   },
   {
-    "id": "10",
+    "id": "12",
+    "question": "Which of the following IPv6 prefixes is used for multicast addresses?",
+    "options": ["2000::/3", "FC00::/8", "FE80::/10", "FD00::/8", "FF00::/8"],
+    "correctAnswer": "FF00::/8"
+  },
+  {
+    "id": "13",
     "question": "Which of the following is a Class C IP address?",
     "options": ["192.168.1.1", "10.0.0.1", "172.16.0.1", "224.0.0.1"],
     "correctAnswer": "192.168.1.1"
+  },
+  {
+    "id": "14",
+    "question": "Which type of cable is commonly used for connecting computers to switches?",
+    "options": [
+      "Coaxial cable",
+      "Twisted pair cable",
+      "Fiber optic cable",
+      "Serial cable"
+    ],
+    "correctAnswer": "Twisted pair cable"
+  },
+  {
+    "id": "15",
+    "question": "An OSPF router is attempting to obtain its router ID. Which of the following will take precedent?",
+    "options": [
+      "The lowest IP address on a loopback interface",
+      "The highest IP address on a loopback interface",
+      "The lowest IP address on a nonloopback interface",
+      "A manually configured router ID",
+      "The highest IP address on a nonloopback interface"
+    ],
+    "correctAnswer": "A manually configured router ID"
+  },
+  {
+    "id": "16",
+    "question": "What is the difference between a vulnerability and an exploit?",
+    "options": [
+      "A vulnerability and an exploit are the same thing",
+      "A vulnerability is a way to take advantage of a weakness, while an exploit is a weakness in a system",
+      "A vulnerability and an exploit are not related to network security"
+    ],
+    "correctAnswer": "A vulnerability is a way to take advantage of a weakness, while an exploit is a weakness in a system"
+  },
+  {
+    "id": "17",
+    "question": "What is a network appliance that checks the state of a packet to determine whether the packet is legitimate?",
+    "options": [
+      "Layer 2 switch",
+      "LAN controller",
+      "load balancer",
+      "firewall"
+    ],
+    "correctAnswer": "firewall"
+  },
+  {
+    "id": "18",
+    "question": "Which feature or protocol is required for an IP SLA to measure UDP jitter?",
+    "options": ["LLDP", "EEM", "CDP", "NTP"],
+    "correctAnswer": "NTP"
+  },
+  {
+    "id": "19",
+    "question": "Which access point mode relies on a centralized controller for management, roaming, and SSID configuration?",
+    "options": [
+      "lightweight mode",
+      "autonomous mode",
+      "bridge mode",
+      "repeater mode"
+    ],
+    "correctAnswer": "lightweight mode"
+  },
+  {
+    "id": "20",
+    "question": "What occurs when PortFast is enabled on an interface that is connected to another switch?",
+    "options": [
+      "Root port choice and spanning-tree recalculation are accelerated when a switch link goes down.",
+      "After spanning-tree converges, PortFast shuts down any port that receives BPDUs.",
+      "VTP is allowed to propagate VLAN configuration information from switch to switch automatically.",
+      "Spanning-tree fails to detect a switching loop increasing the likelihood of broadcast storms."
+    ],
+    "correctAnswer": "Spanning-tree fails to detect a switching loop increasing the likelihood of broadcast storms."
   }
 ]

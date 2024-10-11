@@ -11,6 +11,8 @@ interface QuestionComponentProps {
   onPrevious: () => void;
   selectedOption: string;
   isFirstQuestion: boolean;
+  isLastQuestion: boolean;
+  onReview: () => void;
 }
 
 const answerSchema = z.string().nonempty("Please select an answer.");
@@ -21,6 +23,8 @@ const QuestionComponent: FC<QuestionComponentProps> = ({
   onPrevious,
   selectedOption,
   isFirstQuestion,
+  isLastQuestion,
+  onReview,
 }) => {
   const [currentOption, setCurrentOption] = useState(selectedOption || "");
   const [hasError, setHasError] = useState(false);
@@ -80,7 +84,14 @@ const QuestionComponent: FC<QuestionComponentProps> = ({
           type="submit"
           className="bg-violet-700 text-white px-6 py-2 rounded shadow hover:bg-violet-800 transition duration-200"
         >
-          Next
+          {isLastQuestion ? "Finish" : "Next"}
+        </button>
+        <button
+          type="button"
+          onClick={onReview}
+          className="bg-gray-300 text-violet-800 px-6 py-2 rounded shadow hover:bg-gray-400 transition duration-200"
+        >
+          Review Answers
         </button>
       </div>
     </form>
