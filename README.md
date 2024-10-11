@@ -2,7 +2,8 @@
 
 A web-based quiz application designed to help CCNA students practice and test their knowledge. Built with Next.js, TypeScript, and Tailwind CSS, this app provides an interactive way to prepare for the CCNA exam.
 
-![image](https://github.com/user-attachments/assets/6fd0ddff-98e1-4043-a35b-6334f553aa1d)
+![image](https://github.com/user-attachments/assets/e159db99-63a6-49b3-99c5-9ede3520dbb0)
+
 
 results page
 ![image](https://github.com/user-attachments/assets/7a654cb8-984d-4ee1-803e-6d1c45e4fba2)
