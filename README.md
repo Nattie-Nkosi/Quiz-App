@@ -4,11 +4,8 @@ A web-based quiz application designed to help CCNA students practice and test th
 
 ![image](https://github.com/user-attachments/assets/e159db99-63a6-49b3-99c5-9ede3520dbb0)
 
-
 results page
 ![image](https://github.com/user-attachments/assets/7a654cb8-984d-4ee1-803e-6d1c45e4fba2)
-
-
 
 ## Features
 
@@ -84,7 +81,7 @@ You can customize the quiz by adding your own questions to the `questions.json` 
 
 ## Disclaimer
 
-**Please note:** The questions provided in this app are for practice purposes only and are **not** the actual exam questions from the CCNA certification exam. The content is created to help students prepare and understand the type of material that may be covered.
+**Please note:** The questions previously available in this app were for practice purposes only and were **not** actual exam questions from the CCNA certification exam. However, since sharing exam-related content violates Cisco's NDA, the questions.json file has been removed. The content provided now is solely intended to help students prepare and understand the general type of material that may be covered in their studies.
 
 ## Contributing
 
