@@ -2,6 +2,7 @@
 
 import { FC } from "react";
 import { Question } from "../types";
+import StudyReferences from "../components/study-references";
 
 interface ResultProps {
   questions: Question[];
@@ -100,6 +101,7 @@ const Result: FC<ResultProps> = ({ questions, answers }) => {
             )}
           </div>
         ))}
+        <StudyReferences />
       </div>
     </div>
   );
