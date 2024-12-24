@@ -37,23 +37,31 @@ const Review: FC<ReviewProps> = ({
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-violet-800">
+      <h2 className="text-2xl font-bold text-violet-800 dark:text-violet-300">
         Review Your Answers
       </h2>
       <div className="space-y-4">
         {questions.map((question, idx) => (
           <div
             key={question.id}
-            className={`p-4 border rounded shadow-sm hover:shadow-md transition duration-200 cursor-pointer no-select ${
-              !answers[idx] ? "border-red-500" : ""
-            }`}
+            className={`p-4 border rounded shadow-sm hover:shadow-md transition duration-200 cursor-pointer no-select 
+              dark:bg-gray-800 dark:border-gray-700 dark:hover:border-violet-500
+              ${
+                !answers[idx]
+                  ? "border-red-500 dark:border-red-500"
+                  : "dark:border-gray-600"
+              }`}
             onClick={() => onEditAnswer(idx)}
           >
-            <p className="font-semibold text-violet-800">{question.question}</p>
-            <p>
+            <p className="font-semibold text-violet-800 dark:text-violet-300">
+              {question.question}
+            </p>
+            <p className="dark:text-gray-300">
               Your Answer:{" "}
               {answers[idx] || (
-                <span className="text-red-600">No answer selected</span>
+                <span className="text-red-600 dark:text-red-400">
+                  No answer selected
+                </span>
               )}
             </p>
           </div>
@@ -61,7 +69,8 @@ const Review: FC<ReviewProps> = ({
       </div>
       <button
         onClick={onSubmit}
-        className="bg-violet-700 text-white px-6 py-2 rounded shadow hover:bg-violet-800 transition duration-200"
+        className="bg-violet-700 dark:bg-violet-800 text-white px-6 py-2 rounded shadow 
+          hover:bg-violet-800 dark:hover:bg-violet-700 transition duration-200"
       >
         Submit Quiz
       </button>
