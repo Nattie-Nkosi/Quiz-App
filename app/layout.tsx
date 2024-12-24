@@ -3,6 +3,7 @@ import { FC, ReactNode } from "react";
 import "./styles/globals.css";
 import { ThemeProvider } from "./providers/theme-provider";
 import { ThemeToggle } from "./quiz/components/theme-toggle";
+import Link from "next/link";
 
 interface LayoutProps {
   children: ReactNode;
@@ -19,6 +20,14 @@ const Layout: FC<LayoutProps> = ({ children }) => (
         <header className="bg-violet-700 dark:bg-violet-900 text-white py-4 shadow-md">
           <div className="container mx-auto px-4 flex justify-between items-center">
             <h1 className="text-3xl font-bold">CCNA Exam Practice Quiz</h1>
+            <nav className="flex gap-4">
+              <Link
+                href="/resources"
+                className="text-white hover:text-violet-200 transition-colors"
+              >
+                Study Resources
+              </Link>
+            </nav>
             <ThemeToggle />
           </div>
         </header>
