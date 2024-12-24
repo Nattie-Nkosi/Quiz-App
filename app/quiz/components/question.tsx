@@ -71,7 +71,7 @@ const QuestionComponent: FC<QuestionComponentProps> = ({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      <h2 className="text-2xl font-semibold text-violet-800 no-select">
+      <h2 className="text-2xl font-semibold text-violet-800 dark:text-violet-300 no-select">
         {question.question}
       </h2>
       <div className="space-y-4">
@@ -85,26 +85,30 @@ const QuestionComponent: FC<QuestionComponentProps> = ({
               onChange={() => setCurrentOption(option)}
               className="form-radio h-5 w-5 text-violet-600 transition duration-150"
             />
-            <span className="text-lg text-violet-800">{option}</span>
+            <span className="text-lg text-violet-800 dark:text-violet-200">
+              {option}
+            </span>
           </label>
         ))}
       </div>
       {hasError && (
-        <p className="text-red-600 animate-pulse">Please select an answer.</p>
+        <p className="text-red-600 dark:text-red-400 animate-pulse">
+          Please select an answer.
+        </p>
       )}
       <div className="flex space-x-4">
         {!isFirstQuestion && (
           <button
             type="button"
             onClick={onPrevious}
-            className="bg-violet-500 text-white px-6 py-2 rounded shadow hover:bg-violet-600 transition duration-200"
+            className="bg-violet-500 dark:bg-violet-700 text-white px-6 py-2 rounded shadow hover:bg-violet-600 dark:hover:bg-violet-800 transition duration-200"
           >
             Previous
           </button>
         )}
         <button
           type="submit"
-          className="bg-violet-700 text-white px-6 py-2 rounded shadow hover:bg-violet-800 transition duration-200"
+          className="bg-violet-700 dark:bg-violet-800 text-white px-6 py-2 rounded shadow hover:bg-violet-800 dark:hover:bg-violet-900 transition duration-200"
         >
           {isLastQuestion ? "Finish" : "Next"}
         </button>

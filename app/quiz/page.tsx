@@ -20,7 +20,7 @@ export async function getQuestionsFromFile(): Promise<Question[]> {
 
 const QuizPage: FC = async () => {
   const questions: Question[] = await getQuestionsFromFile();
-
+  // If there are no questions, display a message
   if (!questions || questions.length === 0) {
     return (
       <div className="p-6 max-w-xl mx-auto">
@@ -28,9 +28,10 @@ const QuizPage: FC = async () => {
       </div>
     );
   }
-
+  // Otherwise, display the quiz
+  // How to increase the max-width of the quiz container?
   return (
-    <div className="p-6 max-w-xl mx-auto">
+    <div className="p-1 max-w-xl mx-auto">
       <Quiz questions={questions} />
     </div>
   );
